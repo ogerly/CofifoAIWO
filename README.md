@@ -1,7 +1,7 @@
 # CofifoAIWO - Developer Handover Documentation
 
 
-![image](https://github.com/user-attachments/assets/5211de74-fb52-4c96-becb-8c9bdbe889e6)
+![image](https://github.com/user-attachments/assets/ab068ea5-e7e1-422a-a1ce-d5461acfc933)
 
 ## Projektübersicht
 
