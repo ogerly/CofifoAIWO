@@ -123,6 +123,18 @@ python combine_files.py --help
 docker-compose up -d
 ```
 
+![Bildschirmfoto vom 2025-03-23 11-52-35](https://github.com/user-attachments/assets/6c4153d4-281c-4e30-9f0b-485744fd3648)
+
+![Bildschirmfoto vom 2025-03-23 11-53-18](https://github.com/user-attachments/assets/c55356b0-0785-4372-a7ab-a1947db3ad8f)
+![Bildschirmfoto vom 2025-03-23 11-53-27](https://github.com/user-attachments/assets/c1bc11dd-e514-47b9-a794-748f968a6105)
+![Bildschirmfoto vom 2025-03-23 11-56-53](https://github.com/user-attachments/assets/2e6c3864-705c-471a-8446-b59ff3d56689)
+![Bildschirmfoto vom 2025-03-23 11-56-58](https://github.com/user-attachments/assets/b3b2d26a-c181-420a-a860-f8fd762c49dc)
+
+
+
+
+
+
 ## Weiterentwicklungspotenzial
 
 1. **Erweiterte Filterfunktionen**: Nach Dateityp, Größe, Änderungsdatum
