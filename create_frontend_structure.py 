@@ -1,0 +1,118 @@
+#!/usr/bin/env python
+"""
+Dieses Skript erstellt die benötigte Verzeichnisstruktur für das Vue.js Frontend.
+Es erstellt alle Ordner und platziert die Dateien am richtigen Ort.
+"""
+
+import os
+import shutil
+from pathlib import Path
+
+# Basisverzeichnis (wo sich dieses Skript befindet)
+BASE_DIR = Path(__file__).resolve().parent
+FRONTEND_DIR = BASE_DIR / "frontend"
+
+# Frontend-Struktur
+STRUCTURE = {
+    "src": {
+        "App.vue": None,  # None bedeutet, dass es sich um eine Datei handelt
+        "main.js": None,
+        "views": {
+            "HomeView.vue": None,
+            "ShortcutsView.vue": None, 
+            "BrowserView.vue": None
+        },
+        "router": {
+            "index.js": None
+        },
+        "components": {}  # Leerer Ordner
+    },
+    "public": {
+        "index.html": None
+    }
+}
+
+# Inhalte für neue Dateien
+FILE_CONTENTS = {
+    "public/index.html": """<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CofifoAIWO - Combine Files for AI Workflows</title>
+    <meta name="description" content="Ein Tool zum Kombinieren von Dateien für KI-Workflows">
+    <link rel="icon" href="favicon.ico">
+</head>
+<body>
+    <div id="app"></div>
+    <!-- Built files will be auto injected -->
+</body>
+</html>"""
+}
+
+def create_directory_structure(base_path, structure):
+    """Erstellt rekursiv die Verzeichnisstruktur."""
+    for name, content in structure.items():
+        path = base_path / name
+        
+        if content is None:
+            # Es handelt sich um eine Datei
+            path.parent.mkdir(parents=True, exist_ok=True)
+            
+            # Prüfe, ob wir einen benutzerdefinierten Inhalt für diese Datei haben
+            rel_path = path.relative_to(FRONTEND_DIR)
+            rel_path_str = str(rel_path).replace("\\", "/")  # Normalisiere für Vergleich
+            
+            if rel_path_str in FILE_CONTENTS:
+                with open(path, "w", encoding="utf-8") as f:
+                    f.write(FILE_CONTENTS[rel_path_str])
+            else:
+                # Erstelle leere Datei, wenn keine Inhalte definiert sind
+                path.touch(exist_ok=True)
+        else:
+            # Es handelt sich um ein Verzeichnis
+            path.mkdir(parents=True, exist_ok=True)
+            create_directory_structure(path, content)
+
+def copy_existing_files():
+    """Kopiert vorhandene Dateien in die Frontend-Struktur."""
+    # Kopiere App.vue
+    app_vue_src = BASE_DIR / "App.vue"
+    app_vue_dest = FRONTEND_DIR / "src" / "App.vue"
+    if app_vue_src.exists():
+        shutil.copy2(app_vue_src, app_vue_dest)
+    
+    # Kopiere main.js
+    main_js_src = BASE_DIR / "main.js"
+    main_js_dest = FRONTEND_DIR / "src" / "main.js"
+    if main_js_src.exists():
+        shutil.copy2(main_js_src, main_js_dest)
+    
+    # Kopiere Views
+    for view in ["HomeView.vue", "ShortcutsView.vue", "BrowserView.vue"]:
+        view_src = BASE_DIR / view
+        view_dest = FRONTEND_DIR / "src" / "views" / view
+        if view_src.exists():
+            shutil.copy2(view_src, view_dest)
+    
+    # Kopiere Router
+    router_js_src = BASE_DIR / "router" / "index.js"
+    router_js_dest = FRONTEND_DIR / "src" / "router" / "index.js"
+    if router_js_src.exists():
+        router_js_dest.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(router_js_src, router_js_dest)
+
+def main():
+    """Hauptfunktion."""
+    print("Erstelle Frontend-Verzeichnisstruktur...")
+    
+    # Erstelle die Verzeichnisstruktur
+    create_directory_structure(FRONTEND_DIR, STRUCTURE)
+    
+    # Kopiere vorhandene Dateien
+    copy_existing_files()
+    
+    print("Frontend-Verzeichnisstruktur erfolgreich erstellt!")
+
+if __name__ == "__main__":
+    main()

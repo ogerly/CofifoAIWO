@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  cofifoaiwo:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      # Für die Entwicklung: Mounte das aktuelle Verzeichnis in den Container
+      - .:/app
+      # Verhindere das Überschreiben des node_modules Verzeichnisses
+      - /app/frontend/node_modules
+    environment:
+      - FLASK_ENV=development
+    restart: unless-stopped
