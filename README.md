@@ -1,5 +1,8 @@
 # CofifoAIWO - Developer Handover Documentation
 
+
+![image](https://github.com/user-attachments/assets/5211de74-fb52-4c96-becb-8c9bdbe889e6)
+
 ## Projektübersicht
 
 CofifoAIWO (Combine Files for AI Workflows) ist ein Tool, das Dateien und Verzeichnisse zu einer einzelnen Textdatei kombiniert. Es wurde speziell für den KI-Workflow entwickelt, wo Benutzer häufig mehrere Dateien in einem Format bereitstellen müssen, das von LLMs verarbeitet werden kann.
