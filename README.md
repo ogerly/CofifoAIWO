@@ -145,7 +145,3 @@ docker-compose up -d
 Bei Fragen zur Weiterentwicklung kontaktiere: 
 - Projekt-Repository: [github.com/ogerly/cofifoaiwo](https://github.com/ogerly/cofifoaiwo)
 - Entwickler: [ogerly](https://github.com/ogerly)
-
----
-
-Diese Dokumentation sollte dir einen umfassenden Überblick über das CofifoAIWO-Projekt geben. Das Tool ist bereits voll funktionsfähig, aber es gibt Raum für Verbesserungen und neue Features. Viel Erfolg bei der Weiterentwicklung!
